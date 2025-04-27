@@ -127,3 +127,6 @@ except psycopg2.errors.DuplicateTable:
     print('Tabela tbl_nominees já criada...')
 
 print('Execução concluida com sucesso...')
+
+cursor.close()
+connection.close()

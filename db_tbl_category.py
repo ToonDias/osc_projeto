@@ -31,7 +31,7 @@ lista_unique_category = list(set(lista_all_category))
 lista_category_tratada = []
 
 for item in lista_unique_category:
-    lista_category_tratada.append(item.strip().replace('\n', '').replace('\r', ''))
+    lista_category_tratada.append(str(item).strip().replace('\n', '').replace('\r', ''))
 
 lista_final = sorted(list(filter(None,lista_category_tratada)))
 

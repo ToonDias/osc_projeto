@@ -31,7 +31,7 @@ lista_unique_class = list(set(lista_all_class))
 lista_class_tratada = []
 
 for item in lista_unique_class:
-    lista_class_tratada.append(item.strip().replace('\n', '').replace('\r', ''))
+    lista_class_tratada.append(str(item).strip().replace('\n', '').replace('\r', ''))
 
 lista_final = sorted(list(filter(None,lista_class_tratada)))
 

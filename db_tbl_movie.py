@@ -31,7 +31,7 @@ lista_unique_movie = list(set(lista_all_movie))
 lista_movie_tratada = []
 
 for item in lista_unique_movie:
-    lista_movie_tratada.append(item.strip().replace('\n', '').replace('\r', ''))
+    lista_movie_tratada.append(str(item).strip().replace('\n', '').replace('\r', ''))
 
 lista_final = sorted(list(filter(None,lista_movie_tratada)))
 
