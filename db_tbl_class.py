@@ -48,14 +48,6 @@ connection.autocommit = True
 
 cursor = connection.cursor()
 
-# for item in lista_final:
-#     cursor.execute("INSERT INTO tbl_class (description) VALUES (%s)",(item,))
-
-# cursor.close()
-# connection.close()
-
-# print('Tudo certo por aqui... verifique o banco!')
-
 for item in lista_final:
     try:
         cursor.execute("INSERT INTO tbl_class (description) VALUES (%s)",(item,))
@@ -65,3 +57,4 @@ for item in lista_final:
 
 cursor.close()
 connection.close()
+print('Tudo certo por aqui... verifique o banco!')
