@@ -157,3 +157,39 @@ except Exception as e:
 cursor.close()
 connection.close()
 print('Tudo certo por aqui... verifique o banco!')
+
+caminho_arquivo_csv = Path(__file__).parent / 'relatorios/dados_validos.csv'
+
+# linhas_validas
+with open(caminho_arquivo_csv, mode='w', newline='', encoding='utf-8') as file:
+
+    fieldnames = linhas_validas[0].keys()
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(linhas_invalidas_nsc)
+
+print("Dados escritos com sucesso no CSV!")
+
+caminho_arquivo_csv = Path(__file__).parent / 'relatorios/dados_invalidas_obrigatorios.csv'
+
+# linhas_invalidas_obg
+with open(caminho_arquivo_csv, mode='w', newline='', encoding='utf-8') as file:
+
+    fieldnames = linhas_invalidas_obg[0].keys()
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(linhas_invalidas_nsc)
+
+print("Dados escritos com sucesso no CSV!")
+
+caminho_arquivo_csv = Path(__file__).parent / 'relatorios/dados_invalidas_necessarios.csv'
+
+# linhas_invalidas_nsc
+with open(caminho_arquivo_csv, mode='w', newline='', encoding='utf-8') as file:
+
+    fieldnames = linhas_invalidas_nsc[0].keys()
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(linhas_invalidas_nsc)
+
+print("Dados escritos com sucesso no CSV!")
