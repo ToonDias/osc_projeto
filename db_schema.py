@@ -51,44 +51,57 @@ cursor = connection.cursor()
 
 cursor.execute("""
                CREATE TABLE IF NOT EXISTS tbl_movie (
-               id BIGSERIAL PRIMARY KEY NOT NULL,
-               title VARCHAR(500) NOT NULL
+                id BIGSERIAL NOT NULL,
+                title VARCHAR(500) NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE (title)
                )
                """)
 
 cursor.execute("""
                CREATE TABLE IF NOT EXISTS tbl_class (
-               id BIGSERIAL PRIMARY KEY NOT NULL,
-               description VARCHAR(500) NOT NULL
-               )
+                id BIGSERIAL NOT NULL,
+                description VARCHAR(255) NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE (description)
+                )
                """)
 
 cursor.execute("""
                CREATE TABLE IF NOT EXISTS tbl_category (
-               id BIGSERIAL PRIMARY KEY NOT NULL,
-               description VARCHAR(500) NOT NULL
-               )
+                id BIGSERIAL NOT NULL,
+                description VARCHAR(500) NOT NULL,
+                PRIMARY KEY (ID),
+                UNIQUE(description)
+                )
                """)
 
 cursor.execute("""
                CREATE TABLE IF NOT EXISTS tbl_oscar (
-               id BIGSERIAL PRIMARY KEY NOT NULL,
-               ceremony INT NOT NULL,
-               year INT NOT NULL
-               )
+                id BIGSERIAL NOT NULL,
+                ceremony INT NOT NULL,
+                year INT NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE(ceremony)
+                )
                """)
 
 cursor.execute("""
-               CREATE TABLE IF NOT EXISTS tbl_nominees (
-               id BIGSERIAL PRIMARY KEY NOT NULL,
-               oscar_id BIGINT NOT NULL,
-               class_id BIGINT NOT NULL,
-               category_id BIGINT NOT NULL,
-               movie_id BIGINT NOT NULL,
-               name VARCHAR(500),
-               nominees VARCHAR(500),
-               winner BOOLEAN NOT NULL,
-               detail TEXT,
-               note TEXT
-               )
+               CREATE TABLE tbl_nominees (
+                id BIGSERIAL NOT NULL,
+                oscar_id BIGINT NOT NULL,
+                class_id BIGINT NOT NULL,
+                category_id BIGINT NOT NULL,
+                movie_id BIGINT NOT NULL,
+                name VARCHAR(500),
+                nominees VARCHAR(500),
+                winner BOOLEAN NOT NULL DEFAULT FALSE,
+                detail TEXT,
+                note TEXT,
+                PRIMARY KEY (id),
+                FOREIGN KEY (oscar_id) REFERENCES tbl_oscar(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                FOREIGN KEY (class_id) REFERENCES tbl_class(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                FOREIGN KEY (category_id) REFERENCES tbl_category(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                FOREIGN KEY (movie_id) REFERENCES tbl_movie(id) ON UPDATE CASCADE ON DELETE CASCADE
+                )
                """)
