@@ -13,24 +13,19 @@ CAMINHO_CSV = Path(__file__).parent / 'base/datasheet_oscars.csv'
 
 
 with CAMINHO_CSV.open('r', encoding='utf-8') as arquivo:
-    leitor = csv.DictReader(arquivo, delimiter='\t')
+    leitor = csv.reader(arquivo, delimiter='\t')
+    
+    lista_nomminees = []
 
-    for linha in leitor:
-        linha_tratada = limpar_linha(linha)
-        print(linha_tratada)
+    linhas = list(leitor)
+    for linha in linhas[1:4]:
+        linha_tratada = [item.strip().replace('\n', '').replace('\r', '') for item in linha]
+        lista_nomminees.append(nomminees(*linha_tratada))
 
-    # for linha in leitor:
-    #     linha_limpa = {k.strip(): v.strip() for k, v in linha.items()}
-    #     print(linha_limpa)
 
-    # objetos = []
-    # for linha in leitor:
-    #     item = nomminees(linha['Ceremony'], linha['Year'], linha['Class'], linha['Movie'], linha['Name'], linha['Nominees'], linha['Winner'], linha['Detail'], linha['Note'])
-    #     objetos.append(item)
+lista_nomminees[1].print_info()
+lista_nomminees[1].print_info_type()
 
-# for item in objetos:
-#     if( 'T' in item.winner):
-#         item.print_info()
 
     
 

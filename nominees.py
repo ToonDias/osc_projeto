@@ -1,21 +1,24 @@
 # ['Ceremony', 'Year', 'Class', 'Category', 'Movie', 'Name', 'Nominees', 'Winner', 'Detail', 'Note']
 
 class nomminees:
-    def __init__(self, ceremony, year, category, movie, nome, nominees, winner, detail, note):
-        self.ceremony = ceremony
-        self.year = year
-        self.category = category
-        self.movie = movie
-        self.nome = nome
-        self.nominees = nominees
-        self.winner = winner
-        self.detail = detail
-        self.note = note
+    def __init__(self, ceremony, year, clase, category, movie, nome, nominees, winner, detail, note):
+        self.ceremony = int(ceremony) if ceremony not in [None, '', ' '] else 0000
+        self.year = int(year) if year not in [None, '', ' '] else 0000
+        self.clase = str(clase) if clase not in [None, '', ' '] else 'Não informado'
+        self.category = str(category) if category not in [None, '', ' '] else 'Não informado'
+        self.movie = str(movie) if movie not in [None, '', ' '] else 'Não informado'
+        self.nome = str(nome) if nome not in [None, '', ' '] else 'Não informado'
+        self.nominees = str(nominees) if nominees not in [None, '', ' '] else 'Não informado'
+        self.winner = True if winner not in [None, '', ' '] else False
+        self.detail = str(detail) if detail not in [None, '', ' '] else 'Não informado'
+        self.note = str(note) if note not in [None, '', ' '] else 'Não informado'
 
     def print_info(self):
         print(f'{self.ceremony}')
         print('-------')
         print(f'{self.year}')
+        print('-------')
+        print(f'{self.clase}')
         print('-------')
         print(f'{self.category}')
         print('-------')
@@ -31,7 +34,28 @@ class nomminees:
         print('-------')
         print(f'{self.nome}')
 
-def limpar_linha(linha):
+    def print_info_type(self):
+        print(f'{type(self.ceremony)}')
+        print('-------')
+        print(f'{type(self.year)}')
+        print('-------')
+        print(f'{type(self.clase)}')
+        print('-------')
+        print(f'{type(self.category)}')
+        print('-------')
+        print(f'{type(self.movie)}')
+        print('-------')
+        print(f'{type(self.nome)}')
+        print('-------')
+        print(f'{type(self.nominees)}')
+        print('-------')
+        print(f'{type(self.winner)}')
+        print('-------')
+        print(f'{type(self.detail)}')
+        print('-------')
+        print(f'{type(self.nome)}')
+
+def tratar_linha(linha):
     linha_tratada = {}
 
     for chave, valor in linha.items():
