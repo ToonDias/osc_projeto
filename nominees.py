@@ -30,3 +30,29 @@ class nomminees:
         print(f'{self.detail}')
         print('-------')
         print(f'{self.nome}')
+
+def limpar_linha(linha):
+    linha_tratada = {}
+
+    for chave, valor in linha.items():
+        chave_limpa = chave.strip()
+        if valor is not None:
+            valor_limpo = valor.strip().replace('\n', '').replace('\r', '')
+        else:
+            valor_limpo = ''
+
+        if valor_limpo == '':
+            valor_limpo = None
+        elif valor_limpo == 'True':
+            valor_limpo = True
+        elif valor_limpo == 'False':
+            valor_limpo = False
+        elif chave_limpa in ['Ceremony', 'Year']:
+            try:
+                valor_limpo = int(valor_limpo)
+            except ValueError:
+                pass
+
+        linha_tratada[chave_limpa] = valor_limpo
+
+    return linha_tratada
