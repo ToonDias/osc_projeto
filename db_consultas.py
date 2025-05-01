@@ -79,20 +79,20 @@ connection.close()
 caminho_arquivo_txt = Path(__file__).parent / 'relatorios/questao_1.txt'
 
 with open(caminho_arquivo_txt, mode='w', encoding='utf-8') as file:
-    print("Atores/atrizes que venceram mais vezes:")
+    file.write("Atores/atrizes que venceram mais vezes:\n")
     for name, vitorias in resultados_1:
         file.write(f"{name}: {vitorias} vitórias\n")
 
 caminho_arquivo_txt = Path(__file__).parent / 'relatorios/questao_2.txt'
 
 with open(caminho_arquivo_txt, mode='w', encoding='utf-8') as file:
-    file.write("Categorias que 'Interstellar' venceu:")
+    file.write("Categorias que 'Interstellar' venceu:\n")
     for category_name, year, ceremony in resultados_2:
-        (f"Categoria: {category_name} - Ano: {year} - Cerimonia: {ceremony}\n")
+     file.write(f"Categoria: {category_name} - Ano: {year} - Cerimonia: {ceremony}\n")
 
 caminho_arquivo_txt = Path(__file__).parent / 'relatorios/questao_3.txt'
 
 with open(caminho_arquivo_txt, mode='w', encoding='utf-8') as file:
-    print("Diretores que foram indicados mais de 2 vezes:")
+    file.write("Diretores que foram indicados mais de 2 vezes:\n")
     for nomeinees, indicacoes in resultados_3:
         file.write(f"{nomeinees}: {indicacoes} indicações\n")

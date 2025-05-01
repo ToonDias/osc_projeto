@@ -166,7 +166,7 @@ with open(caminho_arquivo_csv, mode='w', newline='', encoding='utf-8') as file:
     fieldnames = linhas_validas[0].keys()
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     writer.writeheader()
-    writer.writerows(linhas_invalidas_nsc)
+    writer.writerows(linhas_validas)
 
 print("Dados escritos com sucesso no CSV!")
 
@@ -178,7 +178,7 @@ with open(caminho_arquivo_csv, mode='w', newline='', encoding='utf-8') as file:
     fieldnames = linhas_invalidas_obg[0].keys()
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     writer.writeheader()
-    writer.writerows(linhas_invalidas_nsc)
+    writer.writerows(linhas_invalidas_obg)
 
 print("Dados escritos com sucesso no CSV!")
 
